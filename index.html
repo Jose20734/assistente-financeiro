@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color" content="#27ae60">
+
+<title>Assistente Financeiro - Família Porssionato</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>💰 Assistente Financeiro<br>Família Porssionato</h1>
+
+<div class="resumo">
+
+<div class="cardResumo">
+<h4>Total gasto</h4>
+<p id="totalGasto">R$ 0</p>
+</div>
+
+<div class="cardResumo">
+<h4>Meta restante</h4>
+<p id="metaRestante">R$ 0</p>
+</div>
+
+<div class="cardResumo">
+<h4>Fatura cartão</h4>
+<p id="faturaTotal">R$ 0</p>
+</div>
+
+<div class="cardResumo">
+<h4>Previsão mês</h4>
+<p id="previsaoCard">R$ 0</p>
+</div>
+
+</div>
+
+<div class="card">
+
+<h3>Meta mensal</h3>
+
+<input id="metaInput" type="number" placeholder="Ex: 3000">
+
+<button onclick="salvarMeta()">Salvar meta</button>
+
+<div class="metaBar">
+
+<div id="metaProgress" class="metaProgress"></div>
+
+</div>
+
+<p id="metaTexto"></p>
+
+<p id="previsaoMes"></p>
+
+</div>
+
+
+<div class="card">
+
+<h3>Registrar gasto</h3>
+
+<label>Descrição</label>
+<input id="descricao" placeholder="Descrição">
+
+<input id="valor" type="number" placeholder="Valor">
+
+<select id="categoria">
+
+<option>Alimentação</option>
+<option>Combustível</option>
+<option>Mercado</option>
+<option>Lazer</option>
+<option>Transporte</option>
+<option>Moradia</option>
+<option>Saúde</option>
+<option>Outros</option>
+
+</select>
+
+<select id="pagamento">
+
+<option>Dinheiro</option>
+<option>PIX</option>
+<option>Cartão Débito</option>
+<option>Cartão Crédito</option>
+
+</select>
+
+<select id="cartao">
+
+<option value="">Sem cartão</option>
+<option>Nubank</option>
+<option>Itaú</option>
+<option>Inter</option>
+<option>C6</option>
+
+</select>
+
+<select id="pessoa">
+
+<option>Júnior</option>
+<option>Esposa</option>
+<option>Filho</option>
+<option>Casa</option>
+
+</select>
+
+<input id="parcelas" type="number" value="1">
+
+<label for="data">📅 Data da compra</label>
+<input id="data" type="date">
+
+<input id="local" placeholder="Local">
+
+<button onclick="adicionarGasto()">Adicionar</button>
+
+</div>
+
+<div class="dashboard">
+
+<canvas id="graficoCategoria"></canvas>
+
+<canvas id="graficoPessoa"></canvas>
+
+<canvas id="graficoPagamento"></canvas>
+
+<canvas id="graficoMes"></canvas>
+
+</div>
+
+<div class="card">
+
+<h3>💳 Faturas dos Cartões</h3>
+
+<div id="faturasCartao"></div>
+
+</div>
+
+<h3>Lista de gastos</h3>
+
+<button onclick="gerarRelatorio()">📄 Gerar Relatório PDF</button>
+
+<div class="table-container">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Descrição</th>
+<th>Valor</th>
+<th>Categoria</th>
+<th>Pessoa</th>
+<th>Pagamento</th>
+<th>Cartão</th>
+<th>Parcela</th>
+<th>Data</th>
+<th></th>
+
+</tr>
+
+</thead>
+
+<tbody id="lista"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<script src="js/storage.js"></script>
+<script src="js/finance.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>
